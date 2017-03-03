@@ -1,0 +1,47 @@
+ul.demo-list-three.mdl-list(ng-repeat='user in store.rooms')
+  li.mdl-list__item.mdl-list__item--three-line
+    span.mdl-list__item-primary-content
+      i.material-icons.mdl-list__item-avatar person
+      span {{user.firstname + " " + user.name}}
+      span.mdl-list__item-text-body {{user["correo"]}}
+    span.mdl-list__item-secondary-content
+      a.mdl-list__item-secondary-action(ng-click='deleteRoom(user)')
+        i.material-icons close
+      a.mdl-list__item-secondary-action(ng-click="count = !count" ng-init="count=FALSE" ng-show="!count")
+        i.material-icons keyboard_arrow_down
+      a.mdl-list__item-secondary-action(ng-show="count" ng-click="count = !count")
+        i.material-icons keyboard_arrow_up
+  div(ng-show="count")
+    li.mdl-chip.mdl-chip--contact
+      i.material-icons.mdl-chip__contact.mdl-color--blue.mdl-color-text--white http
+      span.mdl-chip__text url : {{user.url}}
+    li.mdl-chip.mdl-chip--contact
+      i.material-icons.mdl-chip__contact.mdl-color--blue.mdl-color-text--white location_on
+      span.mdl-chip__text port : {{user.port}}
+    li.mdl-chip.mdl-chip--contact
+      i.material-icons.mdl-chip__contact.mdl-color--blue.mdl-color-text--white face
+      span.mdl-chip__text usuario : {{user.user}}
+    li.mdl-chip.mdl-chip--contact
+      i.material-icons.mdl-chip__contact.mdl-color--blue.mdl-color-text--white verified_user
+      span.mdl-chip__text Contraseña : {{user.pass}}
+
+a#view-source.button.mdl-button.mdl-js-button.mdl-button--fab.mdl-js-ripple-effect.mdl-button--colored(href='#/addRoom')
+  i.material-icons add
+
+
+            
+style(type='text/css').
+  .demo-list-three {
+  width: 650px;
+  //align: center;
+  float: left;
+  }
+  #view-source {
+  position: fixed;
+  display: block;
+  right: 0;
+  bottom: 0;
+  margin-right: 40px;
+  margin-bottom: 40px;
+  z-index: 900;
+  }

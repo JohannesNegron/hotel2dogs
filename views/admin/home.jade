@@ -1,0 +1,50 @@
+ul.demo-list-three.mdl-list(ng-repeat='user in store.products')
+  li.mdl-list__item.mdl-list__item--three-line
+    span.mdl-list__item-primary-content
+      i.material-icons.mdl-list__item-avatar person
+      span {{user.firstname + " " + user.lastname}}
+      span.mdl-list__item-text-body {{user["correo"]}}
+    span.mdl-list__item-secondary-content
+      a.mdl-list__item-secondary-action(ng-click='delete(user)')
+        i.material-icons close
+      a.mdl-list__item-secondary-action(ng-click="count = !count" ng-init="count=FALSE" ng-show="!count")
+        i.material-icons keyboard_arrow_down
+      a.mdl-list__item-secondary-action(ng-show="count" ng-click="count = !count")
+        i.material-icons keyboard_arrow_up
+  div(ng-show="count")
+    li.mdl-chip.mdl-chip--contact(ng-repeat="pet in user.pets")
+      i.material-icons.mdl-chip__contact.mdl-color--blue.mdl-color-text--white pets
+      span.mdl-chip__text {{pet}}
+    li.mdl-chip.mdl-chip--contact
+      i.material-icons.mdl-chip__contact.mdl-color--blue.mdl-color-text--white access_time
+      span.mdl-chip__text checkin : {{user.checkin}}
+    li.mdl-chip.mdl-chip--contact
+      i.material-icons.mdl-chip__contact.mdl-color--blue.mdl-color-text--white access_time
+      span.mdl-chip__text checkout : {{user.checkout}}
+    li.mdl-chip.mdl-chip--contact
+      i.material-icons.mdl-chip__contact.mdl-color--blue.mdl-color-text--white verified_user
+      span.mdl-chip__text Contraseña : {{user['contraseña']}}
+    //li.mdl-list__item.mdl-list__item--three-line(ng-repeat="pet in ['toby', 'puppy']")
+      span.mdl-list__item-primary-content
+        i.material-icons.mdl-list__item-icon pets
+        span {{pet}}
+        span.mdl-list__item-text-body
+          | Aaron Paul played the role of Jesse in Breaking Bad. He also featured in
+          | the "Need For Speed" Movie.
+    //li.mdl-list__item.mdl-list__item--three-line
+      span.mdl-list__item-primary-content
+        i.material-icons.mdl-list__item-icon access_time
+        span check_out programado:
+        span.mdl-list__item-text-body __time__
+    //li.mdl-list__item.mdl-list__item--three-line
+      span.mdl-list__item-primary-content
+        i.material-icons.mdl-list__item-icon verified_user
+        span Contraseña: 
+        span.mdl-list__item-text-body 
+          | {{user["contraseña"]}}
+style.
+  .demo-list-three {
+  width: 650px;
+  //align: center;
+  float: left;
+  }

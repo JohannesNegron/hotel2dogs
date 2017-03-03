@@ -1,0 +1,62 @@
+main.mdl-layout__content
+  .mdl-grid
+    .mdl-card.mdl-shadow--6dp
+      .mdl-card__title.mdl-color--primary.mdl-color-text--white
+        .mdl-card__title-text NUEVO USUARIO
+      .mdl-card__supporting-text(ng-controller='AddController')
+        form(action="#/")
+          p Nombre 
+            input(type='text', ng-model='user.firstname' placeholder="Nombre" required)
+          p Apellido 
+            input(type='text', ng-model='user.lastname' placeholder="Apellido" required)
+          p Correo 
+            input(type='text', ng-model='user.mail' placeholder="Correo Electronico" required)
+          p Escriba el nombre de la mascota y luego clik en añadir
+            input(type='text', ng-model='pet' placeholder="M A S C O T A")
+            button(type="button" ng-click='addpet(pet)')
+              | Añadir
+          p(ng-repeat = "pet in pets")
+            span.mdl-chip.mdl-chip--contact
+              i.material-icons.mdl-chip__contact.mdl-color--blue.mdl-color-text--white pets
+              span.mdl-chip__text {{pet}}
+              a.mdl-chip__action(ng-click="deletepet(pet)")
+                i.material-icons cancel
+          |Seleccionar Habitacion: 
+          select(ng-model="user.room")
+            option(ng-repeat='option in rooms', value='{{option.name}}') {{option.name}}
+          P Check Out     
+            input(type='date', ng-model='user.checkout' ng-init='user.checkout = time.today')
+          button(type='submit', ng-click='update(user)', value='Suscribir')
+            |Suscribir
+            
+style(type='text/css').
+  .mdl-grid {
+  max-width: 300px;
+  margin-top: 20px;
+  }
+  .mdl-card__actions {
+  display: flex;
+  box-sizing:border-box;
+  align-items: center;
+  }
+  .mdl-card__actions > .mdl-button--icon {
+  margin-right: 3px;
+  margin-left: 3px;
+  }
+  input[type=text], input[type=password]{
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  }
+  button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  }

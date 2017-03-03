@@ -1,0 +1,42 @@
+<html>
+  <head>
+    <title>Locomote</title>
+    <style type="text/css">
+      #player {
+        width: 320px;
+        height: 240px;
+      }
+    </style> 
+    <script src="locomote.min.js"></script> 
+    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script> 
+    <script type="text/javascript">
+ 
+      $(document).ready(function() {
+        /* Load SWF and instantiate Locomote */
+        var locomote = new Locomote('player', 'Player.swf');
+ 
+        /* Set up a listener for when the API is ready to be used */
+        locomote.on('apiReady', function() {
+          console.log('API is ready. `play` can now be called');
+ 
+          /* Tell Locomote to play the specified media */
+          locomote.play('rtsp://oscar:12345@proxima.dyndns.info:25110/videoMain');
+        });
+ 
+        /* Start listening for streamStarted event */
+        locomote.on('streamStarted', function() {
+          console.log('stream has started');
+        });
+ 
+        /* If any error occurs, we should take action */
+        locomote.on('error', function(err) {
+          console.log(err);
+        });
+      });
+ 
+    </script> 
+  </head>
+  <body>
+    <div id="player" class="player"></div>
+  </body>
+</html>
